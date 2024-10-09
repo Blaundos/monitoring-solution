@@ -45,9 +45,7 @@ Before we dive into the steps, we need a few things ready:
 - **kubectl**: This is the command-line tool that helps you talk to Kubernetes.
 - **Docker**: This is used to manage and run the services in containers.
 
-### Step 3: Extract the ZIP File
-
-First, unzip the file that you downloaded (`monitoring-solution.zip`). Inside, you will see a structure like this:
+### Step 3: Understand the Folder Structure
 
 ```
 monitoring-solution/
