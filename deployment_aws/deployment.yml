@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-monitored-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: simple-monitored-app
+  template:
+    metadata:
+      labels:
+        app: simple-monitored-app
+    spec:
+      containers:
+        - name: simple-monitored-app
+          image: simple-monitored-app:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
