@@ -1,0 +1,38 @@
+# values.yaml for simple monitored app Helm chart
+
+replicaCount: 3
+
+image:
+  repository: your-docker-repo/simple-monitored-app
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  port: 9090
+
+env:
+  - name: ENVIRONMENT
+    value: "production"
+
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+
+nodeSelector:
+  environment: production
+
+tolerations: []
+
+affinity: {}
+
+alertmanager:
+  enabled: true
+  config:
+    global:
+      smtp_smarthost: 'smtp.example.com:25'
+      smtp_from: 'alertmanager@example.com'

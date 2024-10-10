@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-monitored-app
+  labels:
+    app: simple-monitored-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-monitored-app
+  template:
+    metadata:
+      labels:
+        app: simple-monitored-app
+    spec:
+      containers:
+        - name: simple-monitored-app
+          image: <your-docker-image-here>
+          ports:
+            - containerPort: 80
+          env:
+            - name: ENVIRONMENT
+              value: "production"
